@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13 2003</title>
+<style>
+  .timer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 36px;
+  }
+
+  .centrall {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+</head>
+<body>
+
+    <img src="imagens/phen288.jpg" alt="hi" class="centrall">
+
+
+<div class="timer" id="timer">
+  <h2> <span id="days">20</span> days, <span id="hours">00</span> hours, <span id="minutes">00</span> minutes, <span id="seconds">00</span> seconds</h2>
+</div>
+
+<script>
+
+  var targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() + 20);
+
+  
+  function updateTimer() {
+    var now = new Date();
+    var difference = Math.abs(targetDate - now) / 1000; 
+
+    var days = Math.floor(difference / (3600 * 24));
+    difference -= days * 3600 * 24;
+
+    var hours = Math.floor(difference / 3600);
+    difference -= hours * 3600;
+
+    var minutes = Math.floor(difference / 60);
+    difference -= minutes * 60;
+
+    var seconds = Math.floor(difference);
+
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  }
+
+
+  setInterval(updateTimer, 1000);
+
+
+  updateTimer();
+</script>
+
+</body>
+</html>
