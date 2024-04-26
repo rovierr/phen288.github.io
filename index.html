@@ -29,11 +29,17 @@
 
 <script>
 
-  var targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 20);
-
-  
   function updateTimer() {
+    var targetDate;
+    var storedTargetDate = localStorage.getItem('targetDate');
+    if (storedTargetDate) {
+      targetDate = new Date(storedTargetDate);
+    } else {
+      targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 20);
+      localStorage.setItem('targetDate', targetDate);
+    }
+
     var now = new Date();
     var difference = Math.abs(targetDate - now) / 1000; 
 
